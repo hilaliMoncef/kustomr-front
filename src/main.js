@@ -23,6 +23,13 @@ Vue.use(Toasted, {
   iconPack: 'fontawesome'
 })
 
+// Layouts components
+import Default from "@/layouts/Default.vue"
+import Fullpage from "@/layouts/Fullpage.vue"
+
+Vue.component('default-layout', Default)
+Vue.component('fullpage-layout', Fullpage)
+
 // Using v-select
 Vue.component('v-select', vSelect);
 

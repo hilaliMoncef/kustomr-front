@@ -8,7 +8,7 @@
               <div class="input-group search-bar">
                 <div class="input-group-append">
                   <div class="input-group-text">
-                    <i class="fas fa-search"></i>
+                    <font-awesome-icon icon="search" />
                   </div>
                 </div>
                 <input class="form-control" type="text" id="search-bar" placeholder="Rechercher.." />
@@ -28,7 +28,7 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <i class="fas fa-bell"></i>
+                  <font-awesome-icon icon="bell" />
                 </a>
               </li>
               <li class="nav-item nav-item-rounded dropdown">
@@ -40,29 +40,29 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <i class="fas fa-user"></i>
+                  <font-awesome-icon icon="user" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" v-if="currentUser.is_vendor" aria-labelledby="userDropdown">
                   <router-link class="dropdown-item" to="/reglages">
-                    <i class="fas fa-cog mr-2"></i>Réglages
+                    <font-awesome-icon icon="cog" class="mr-2" />Réglages
                   </router-link>
                   <router-link class="dropdown-item" to="/logout">
-                    <i class="fas fa-power-off mr-2"></i>Déconnexion
+                    <font-awesome-icon icon="power-off" class="mr-2" />Déconnexion
                   </router-link>
                 </div>
 
                 <div class="dropdown-menu dropdown-menu-right" v-else-if="currentUser.is_staff" aria-labelledby="userDropdown">
                   <router-link class="dropdown-item" to="/django-admin">
-                    <i class="fas fa-user mr-2"></i>Administration
+                    <font-awesome-icon icon="user" class="mr-2" />Administration
                     Django
                   </router-link>
                   <router-link class="dropdown-item" to="/logout">
-                    <i class="fas fa-power-off mr-2"></i>Déconnexion
+                    <font-awesome-icon icon="power-off" class="mr-2" />Déconnexion
                   </router-link>
                 </div>
                 <div class="dropdown-menu dropdown-menu-right" v-else-if="currentUser.is_staff" aria-labelledby="userDropdown">
                   <router-link class="dropdown-item" to="/logout">
-                    <i class="fas fa-power-off mr-2"></i>Déconnexion
+                    <font-awesome-icon icon="power-off" class="mr-2" />Déconnexion
                   </router-link>
                 </div>
               </li>

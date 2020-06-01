@@ -19,125 +19,69 @@
               alt
               class="user-avatar-md rounded-circle mr-2"
             />
-
-            <!--
-                    {% if user.is_vendor %}
-                    <div class="d-flex flex-column">
-                        <strong class="">{{ user }}</strong>
-                        <small>{{ user.vendor.store_name }}</small>
-                    </div>
-                    {% elif user.is_staff %}
-                    <div class="d-flex flex-column">
-                        <strong class="">{{ user }}</strong>
-                        <small>Administrateur</small>
-                    </div>
-                    {% elif user.is_customer %}
-                    <div class="d-flex flex-column">
-                        <strong class="">{{ user }}</strong>
-                        <small>Client</small>
-                    </div>
-                    {% endif %}
-            -->
           </a>
-          <div class="collapse submenu" id="submenu-myuser" v-if="currentUser.is_vendor">
+          <div class="collapse submenu" id="submenu-myuser">
             <router-link class="dropdown-item" to="/reglages">
-              <i class="fas fa-cog mr-2"></i>Réglages
+              <font-awesome-icon icon="cog" class="mr-2" />Réglages
             </router-link>
             <router-link class="dropdown-item" to="/logout">
-              <i class="fas fa-power-off mr-2"></i>Déconnexion
-            </router-link>
-          </div>
-          <div class="collapse submenu" id="submenu-myuser" v-else-if="currentUser.is_staff">
-            <router-link class="dropdown-item" to="/django-admin">
-              <i class="fas fa-user mr-2"></i>Administration
-              Django
-            </router-link>
-            <router-link class="dropdown-item" to="/logout">
-              <i class="fas fa-power-off mr-2"></i>Déconnexion
+              <font-awesome-icon icon="power-off" class="mr-2" />Déconnexion
             </router-link>
           </div>
         </li>
-        <div v-if="currentUser.is_vendor">
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/">
-              <i class="fas fa-home"></i> Accueil
+        <div>
+          <li :class="[currentRoute == '/' ? 'active' : '', 'nav-item']">
+            <div class="before"></div>
+            <router-link class="nav-link" to="/">
+              <font-awesome-icon icon="home" /> Accueil
             </router-link>
+            <div class="after"></div>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/clients">
-              <i class="fas fa-users"></i> Clients
+          <li :class="[currentRoute.includes('clients') ? 'active' : '', 'nav-item']">
+            <div class="before"></div>
+            <router-link class="nav-link" to="/clients">
+              <font-awesome-icon icon="users" /> Clients
             </router-link>
+            <div class="after"></div>
           </li>
 
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/reductions">
-              <i class="fas fa-divide"></i> Réductions
+          <li :class="[currentRoute.includes('reductions') ? 'active' : '', 'nav-item']">
+            <div class="before"></div>
+            <router-link class="nav-link" to="/reductions">
+              <font-awesome-icon icon="divide" /> Réductions
             </router-link>
+            <div class="after"></div>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/communication">
-              <i class="fas fa-bullhorn"></i> Communication
+          <li :class="[currentRoute.includes('communication') ? 'active' : '', 'nav-item']">
+            <div class="before"></div>
+            <router-link class="nav-link" to="/communication">
+              <font-awesome-icon icon="bullhorn" /> Communication
             </router-link>
+            <div class="after"></div>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/statistiques">
-              <i class="fas fa-chart-bar"></i> Statistiques
+          <li :class="[currentRoute.includes('statistiques') ? 'active' : '', 'nav-item']">
+            <div class="before"></div>
+            <router-link class="nav-link" to="/statistiques">
+              <font-awesome-icon icon="chart-bar" /> Statistiques
             </router-link>
+            <div class="after"></div>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/formations">
-              <i class="fas fa-book"></i> Formations
+          <li :class="[currentRoute.includes('formations') ? 'active' : '', 'nav-item']">
+            <div class="before"></div>
+            <router-link class="nav-link" to="/formations">
+              <font-awesome-icon icon="book" /> Formations
             </router-link>
-          </li>
-        </div>
-
-        <!-- ADMINISTRATION LINKS-->
-        <div v-if="currentUser.is_staff">
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/">
-              <i class="fas fa-home"></i> Accueil
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/vendors">
-              <i class="fas fa-briefcase"></i> Commerçants
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/">
-              <i class="fas fa-share-alt"></i> Réseaux sociaux
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/">
-              <i class="fas fa-broadcast-tower"></i> Marketing
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link animsition-link" to="/">
-              <i class="fas fa-book"></i> Formations
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link animsition-link d-flex align-items-center justify-content-between"
-              to="/"
-            >
-              <span>
-                <i class="fas fa-envelope"></i> Messages
-              </span>
-              <span class="badge badge-light mr-1">0</span>
-            </router-link>
+            <div class="after"></div>
           </li>
         </div>
       </ul>
     </div>
     <div class="sidebar-buttons-bottom">
-      <div class="d-flex align-items-center justify-content-around w-100">
-        <div v-if="currentUser && currentUser.is_vendor">
+      <div class="d-flex align-items-center justify-content-around w-100 mb-2">
+        <div>
           <router-link
             to="/reglages"
-            class="text-white animsition-link py-2 text-uppercase"
+            class="text-white  text-uppercase"
           >Réglages</router-link>
         </div>
       </div>
@@ -154,6 +98,11 @@ export default {
                 is_staff: false
             }
         }
+  },
+  computed: {
+    currentRoute() {
+      return this.$route.path;
+    }
   }
 }
 </script>

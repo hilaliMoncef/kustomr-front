@@ -14,12 +14,12 @@ Vue.use(VueRouter)
     path: '/login',
     name: 'Login',
     meta: { layout: "fullpage" },
-    component: () => import(/* webpackChunkName: "login" */ '../views/auth/Login.vue')
+    component: () => import(/* webpackChunkName: "login" */ '@/views/auth/Login.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/clients',
+    name: 'Clients',
+    component: () => import(/* webpackChunkName: "clients" */ '@/views/Clients/All.vue')
   }
 ]
 

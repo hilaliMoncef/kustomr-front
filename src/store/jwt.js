@@ -1,9 +1,9 @@
 import axios from 'axios'
 
 export default {
-    login (username, pwd) {
+    login (email, pwd) {
       return axios.post('/users/token/', {
-        username: username,
+        email: email,
         password: pwd
       })
     },

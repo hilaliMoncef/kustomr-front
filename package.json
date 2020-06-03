@@ -17,6 +17,7 @@
     "connect-history-api-fallback": "^1.6.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "vue-click-outside": "^1.1.0",
     "vue-progressbar": "^0.7.5",
     "vue-router": "^3.2.0",
     "vue-select": "^3.10.3",

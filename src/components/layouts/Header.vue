@@ -16,7 +16,7 @@
               </div>
             </li>
           </div>
-          
+
           <div class="col-6" v-if="$store.getters.isLoggedIn">
             <div class="d-flex align-items-start justify-content-end">
               <li class="nav-item nav-item-rounded dropdown mr-2">
@@ -32,39 +32,25 @@
                 </a>
               </li>
               <li class="nav-item nav-item-rounded dropdown">
-                <a
-                  class="nav-link"
-                  href="#"
-                  id="userDropdown"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <font-awesome-icon icon="user" />
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" v-if="currentUser.is_vendor" aria-labelledby="userDropdown">
-                  <router-link class="dropdown-item" to="/reglages">
-                    <font-awesome-icon icon="cog" class="mr-2" />Réglages
-                  </router-link>
-                  <router-link class="dropdown-item" to="/logout">
-                    <font-awesome-icon icon="power-off" class="mr-2" />Déconnexion
-                  </router-link>
-                </div>
-
-                <div class="dropdown-menu dropdown-menu-right" v-else-if="currentUser.is_staff" aria-labelledby="userDropdown">
-                  <router-link class="dropdown-item" to="/django-admin">
-                    <font-awesome-icon icon="user" class="mr-2" />Administration
-                    Django
-                  </router-link>
-                  <router-link class="dropdown-item" to="/logout">
-                    <font-awesome-icon icon="power-off" class="mr-2" />Déconnexion
-                  </router-link>
-                </div>
-                <div class="dropdown-menu dropdown-menu-right" v-else-if="currentUser.is_staff" aria-labelledby="userDropdown">
-                  <router-link class="dropdown-item" to="/logout">
-                    <font-awesome-icon icon="power-off" class="mr-2" />Déconnexion
-                  </router-link>
-                </div>
+                <dropdown class="nav-link">
+                  <template v-slot:button>
+                    <font-awesome-icon icon="user" />
+                  </template>
+                  <template v-slot:links>
+                    <ul class="list-unstyled">
+                      <li>
+                        <router-link class="dropdown-item" to="/reglages">
+                          <font-awesome-icon icon="cog" class="mr-2" />Réglages
+                        </router-link>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#" @click.prevent="logout">
+                          <font-awesome-icon icon="power-off" class="mr-2" />Déconnexion
+                        </a>
+                      </li>
+                    </ul>
+                  </template>
+                </dropdown>
               </li>
             </div>
           </div>
@@ -79,13 +65,20 @@
 
 <script>
 export default {
-    data() {
-        return {
-            currentUser: {
-                is_vendor: true,
-                is_staff: false
-            }
-        }
+  data() {
+    return {
+      currentUser: {
+        is_vendor: true,
+        is_staff: false
+      }
+    };
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout").then(() => {
+        this.$toasted.global.success({message: 'Vous êtes désormais déconnecté.'})
+      });
+    }
   }
-}
+};
 </script>

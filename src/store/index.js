@@ -48,7 +48,7 @@ export default new Vuex.Store({
   actions: {
     login({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        jwt.login(payload.username, payload.password)
+        jwt.login(payload.email, payload.password)
           .then(response => {
             // Set accessToken
             localStorage.setItem('accessToken', response.data.access)
@@ -90,7 +90,8 @@ export default new Vuex.Store({
     logout({ commit }) {
       localStorage.removeItem('accessToken')
       localStorage.removeItem('refreshToken')
-      commit('DELETE_USER_INFO')
+      commit('DELETE_USER_INFO');
+      router.push('/login')
     }
   },
   getters: {

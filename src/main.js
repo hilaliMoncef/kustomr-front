@@ -11,6 +11,7 @@ import VueProgressBar from 'vue-progressbar'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Dropdown from "@/components/utils/Dropdown.vue"
 
 Vue.config.productionTip = false
 
@@ -18,6 +19,9 @@ Vue.config.productionTip = false
 library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+// Custom Components
+Vue.component('dropdown', Dropdown)
 
 // Progressbar
 Vue.use(VueProgressBar, {
@@ -39,6 +43,34 @@ Vue.use(Toasted, {
   keepOnHover: true,
   iconPack: 'fontawesome'
 })
+
+Vue.toasted.register('error',
+  (payload) => {
+    // if there is no message passed show default message
+    if (!payload.message) {
+      return "Oops.. Something Went Wrong.."
+    }
+    // if there is a message show it with the message
+    return payload.message;
+  },
+  {
+    type: 'error'
+  }
+)
+
+Vue.toasted.register('success',
+  (payload) => {
+    // if there is no message passed show default message
+    if (!payload.message) {
+      return "OK."
+    }
+    // if there is a message show it with the message
+    return payload.message;
+  },
+  {
+    type: 'success'
+  }
+)
 
 // Layouts components
 import Default from "@/layouts/Default.vue"

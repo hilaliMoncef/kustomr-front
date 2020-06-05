@@ -91,17 +91,12 @@
 
 <script>
 export default {
-    data() {
-        return {
-            currentUser: {
-                is_vendor: true,
-                is_staff: false
-            }
-        }
-  },
   computed: {
     currentRoute() {
       return this.$route.path;
+    },
+    currentUser() {
+      return this.$store.state.currentUser;
     }
   }
 }

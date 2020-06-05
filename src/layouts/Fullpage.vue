@@ -1,5 +1,5 @@
 <template>
-    <div class="dashboard-full-page-wrapper">
+    <div>
         <slot />
     </div>
 </template>

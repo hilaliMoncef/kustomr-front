@@ -39,6 +39,9 @@
                   <template v-slot:links>
                     <ul class="list-unstyled">
                       <li>
+                        {{ currentUser.first_name }} {{ currentUser.last_name }}
+                      </li>
+                      <li>
                         <router-link class="dropdown-item" to="/reglages">
                           <font-awesome-icon icon="cog" class="mr-2" />Réglages
                         </router-link>
@@ -65,13 +68,10 @@
 
 <script>
 export default {
-  data() {
-    return {
-      currentUser: {
-        is_vendor: true,
-        is_staff: false
-      }
-    };
+  computed: {
+    currentUser() {
+      return this.$store.state.currentUser;
+    }
   },
   methods: {
     logout() {

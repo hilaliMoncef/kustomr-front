@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="card">
+  <div class="dashboard-full-page-wrapper">
+    <div class="card" style="min-width: 300px;">
       <div class="card-header">
           Connexion
       </div>

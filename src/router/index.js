@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import store from '../store/index'
+
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -12,6 +13,24 @@ Vue.use(VueRouter)
     component: Home,
     meta: {
       requiresAuth: true
+    }
+  },
+  {
+    path: '/welcome/:id-:vendor',
+    name: 'CustomerLandingPage',
+    component: () => import(/* webpackChunkName: "customer" */ '@/views/landingpage/LandingPage.vue'),
+    meta: {
+      layout: "fullpage",
+      requiresAnon: true
+    }
+  },
+  {
+    path: '/welcome/:id-:vendor/:token',
+    name: 'CustomerDashboard',
+    component: () => import(/* webpackChunkName: "customer" */ '@/views/landingpage/Dashboard.vue'),
+    meta: {
+      layout: "fullpage",
+      requiresAnon: true
     }
   },
   {
@@ -44,7 +63,16 @@ router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     if (!isLoggedIn) {
       // User not logged in, can't continue
+      Vue.toasted.global.error({message: 'Veuillez vous reconnecter d\'abord.'});
       return next({ path: '/login', query: { to: to.path } });
+    }
+  }
+
+  if (to.meta.requiresAnon) {
+    if (isLoggedIn) {
+      // User not logged in, can't continue
+      Vue.toasted.global.error({message: 'Vous êtes déjà connecté. Vous n\'avez pas le droit d\'aller sur cette page.'});
+      return next({ path: '/' });
     }
   }
 

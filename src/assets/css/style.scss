@@ -257,6 +257,10 @@ a.text-primary:hover {
   border-radius: 2px;
 }
 
+.btn-rounded {
+  border-radius: 25px;
+}
+
 .btn-round {
   display: flex;
   align-items: center;
@@ -2461,6 +2465,7 @@ address {}
       background-color: white;
       border-radius: 5px;
       transition: 0.2s all ease-in-out;
+      cursor: pointer;
 
       &:hover {
         -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.15);
@@ -2507,4 +2512,13 @@ address {}
 .slide-right-enter {
   opacity: 0;
   transform: translate(-2em, 0);
+}
+
+
+.form-dark {
+  .form-control {
+    background-color: #F1F4F6;
+    border: 0;
+    border-radius: 5px;
+  }
 }

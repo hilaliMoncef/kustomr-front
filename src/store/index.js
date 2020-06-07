@@ -9,6 +9,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     currentUser: JSON.parse(localStorage.getItem("userInfo")) || {},
+    currentVendor: JSON.parse(localStorage.getItem("vendorInfo")) || {},
     accessToken: localStorage.getItem('accessToken') || '',
     refreshToken: localStorage.getItem('refreshToken') || ''
   },
@@ -23,23 +24,29 @@ export default new Vuex.Store({
     UPDATE_USER_INFO(state, payload) {
       // Get Data localStorage
       let userInfo = JSON.parse(localStorage.getItem("userInfo")) || state.currentUser
-      for (const property of Object.keys(payload)) {
+      for (const property of Object.keys(payload.user)) {
 
-        if (payload[property] != null) {
+        if (payload.user[property] != null) {
           // If some of user property is null - user default property defined in state.currentUser
-          state.currentUser[property] = payload[property]
+          state.currentUser[property] = payload.user[property]
 
           // Update key in localStorage
-          userInfo[property] = payload[property]
+          userInfo[property] = payload.user[property]
         }
 
       }
       // Store data in localStorage
       localStorage.setItem("userInfo", JSON.stringify(userInfo))
+
+      if(payload.vendor) {
+        state.currentVendor = payload.vendor
+        localStorage.setItem("vendorInfo", JSON.stringify(payload.vendor))
+      }
     },
     DELETE_USER_INFO(state) {
       // Get Data localStorage
       state.currentUser = {}
+      state.currentVendor = {}
       state.refreshToken = ''
       state.accessToken = ''
       localStorage.removeItem("userInfo")

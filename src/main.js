@@ -10,18 +10,19 @@ import Toasted from 'vue-toasted'
 import vSelect from 'vue-select'
 import VueProgressBar from 'vue-progressbar'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Dropdown from "@/components/utils/Dropdown.vue"
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/vue-loading.css'
 import VModal from 'vue-js-modal'
 import excel from 'vue-excel-export'
+import VuePaginate from 'vue-paginate'
 
 Vue.config.productionTip = false
 
 // Font awesome
-library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV)
+library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -43,6 +44,9 @@ Vue.use(VModal, { componentName: "modal" })
 
 // Excel export 
 Vue.use(excel)
+
+// Pagination
+Vue.use(VuePaginate)
 
 // Axios config
 const baseURL = process.env.VUE_APP_SERVER_URL;

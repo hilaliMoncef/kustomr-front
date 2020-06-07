@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-items-center w-100 mb-5">
+  <div class="position-fixed header d-flex align-items-center mb-5">
     <nav class="flex-grow-1 navbar navbar-expand-lg p-0 d-none d-lg-flex">
       <div id="topNav" class="collapse navbar-collapse">
         <ul class="navbar-nav w-100 row d-flex">

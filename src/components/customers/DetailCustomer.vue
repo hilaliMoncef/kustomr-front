@@ -1,11 +1,18 @@
 <template>
   <div>
+    <modal class="h-100" width="30%" height="auto" name="encaissement" :adaptative="true">
+      <div class="p-4 px-5">
+        <h5 class="text-dark text-center text-uppercase mb-4">Encaisser {{ customer.first_name }} {{ customer.last_name }}</h5>
+        <Encaissement :customer="customer" />
+      </div>
+    </modal>
+
     <h4
       class="text-dark text-center text-uppercase mb-0"
     >{{ customer.first_name }} {{ customer.last_name }}</h4>
     <p class="text-muted text-center">{{ customer.email }} - {{ customer.phone }}</p>
     <div class="text-center">
-      <button type="button" class="btn btn-primary btn-rounded mr-3 text-uppercase">
+      <button type="button" @click.prevent="$modal.show('encaissement')" class="btn btn-primary btn-rounded mr-3 text-uppercase">
         <font-awesome-icon icon="hand-holding-usd" class="mr-2" />Encaisser
       </button>
       <button type="button" class="btn btn-outline-primary btn-rounded text-uppercase">Rembourser</button>
@@ -61,7 +68,10 @@
 </template>
 
 <script>
+import Encaissement from "@/components/customers/Encaissement.vue";
+
 export default {
+  components: { Encaissement },
   props: {
     customer: {
       type: Object,

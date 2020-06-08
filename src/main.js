@@ -10,7 +10,7 @@ import Toasted from 'vue-toasted'
 import vSelect from 'vue-select'
 import VueProgressBar from 'vue-progressbar'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Dropdown from "@/components/utils/Dropdown.vue"
 import Loading from 'vue-loading-overlay'
@@ -18,11 +18,15 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 import VModal from 'vue-js-modal'
 import excel from 'vue-excel-export'
 import VuePaginate from 'vue-paginate'
+import Tabs from '@/components/utils/Tabs.vue'
+import Tab from '@/components/utils/Tab.vue'
+import vue2Dropzone from 'vue2-dropzone'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 
 Vue.config.productionTip = false
 
 // Font awesome
-library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd)
+library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -149,6 +153,13 @@ Vue.component('fullpage-layout', Fullpage)
 
 // Using v-select
 Vue.component('v-select', vSelect);
+
+// Custom tabs
+Vue.component('tabs', Tabs)
+Vue.component('tab', Tab)
+
+// Dropzone file upload
+Vue.component('dropzone', vue2Dropzone)
 
 new Vue({
   router,

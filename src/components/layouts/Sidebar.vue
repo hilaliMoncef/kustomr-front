@@ -32,7 +32,7 @@
         <div>
           <li :class="[currentRoute == '/' ? 'active' : '', 'nav-item']">
             <div class="before"></div>
-            <router-link class="nav-link" to="/">
+            <router-link class="nav-link" to="/" exact>
               <font-awesome-icon icon="home" /> Accueil
             </router-link>
             <div class="after"></div>
@@ -45,9 +45,9 @@
             <div class="after"></div>
           </li>
 
-          <li :class="[currentRoute.includes('reductions') ? 'active' : '', 'nav-item']">
+          <li :class="[currentRoute.includes('discounts') ? 'active' : '', 'nav-item']">
             <div class="before"></div>
-            <router-link class="nav-link" to="/reductions">
+            <router-link class="nav-link" to="/discounts">
               <font-awesome-icon icon="divide" /> Réductions
             </router-link>
             <div class="after"></div>

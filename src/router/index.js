@@ -46,6 +46,30 @@ Vue.use(VueRouter)
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '/discounts',
+    name: 'Discounts',
+    component: () => import(/* webpackChunkName: "discounts" */ '@/views/Discounts/All.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/discounts/add',
+    name: 'AddDiscounts',
+    component: () => import(/* webpackChunkName: "discounts" */ '@/views/Discounts/Add.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: () => import(/* webpackChunkName: "others" */ '@/views/Settings.vue'),
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 

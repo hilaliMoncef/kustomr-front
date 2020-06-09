@@ -1,5 +1,26 @@
 <template>
   <div>
+     <modal class="h-100" width="70%" height="auto" name="editPoints" :adaptative="true">
+      <div class="p-2 px-5">
+        <h5 class="text-dark text-center text-uppercase mb-4">Type de réduction : <span class="text-primary">Point de fidélité</span></h5>
+        <EditPointDiscount @updatedDiscount="updateDiscountPoint" :instance="editedDiscount" :vendor="$store.state.currentVendor.id" />
+      </div>
+    </modal>
+
+    <modal class="h-100" width="70%" height="auto" name="editAmounts" :adaptative="true">
+      <div class="p-2 px-5">
+        <h5 class="text-dark text-center text-uppercase mb-4">Type de réduction : <span class="text-primary">Montant fixe</span></h5>
+        <EditAmountDiscount @updatedDiscount="updateDiscountAmount" :instance="editedDiscount" :vendor="$store.state.currentVendor.id" />
+      </div>
+    </modal>
+
+    <modal class="h-100" width="70%" height="auto" name="editPercents" :adaptative="true">
+      <div class="p-2 px-5">
+        <h5 class="text-dark text-center text-uppercase mb-4">Type de réduction : <span class="text-primary">Pourcentage</span></h5>
+        <EditPercentDiscount @updatedDiscount="updateDiscountPercent" :instance="editedDiscount" :vendor="$store.state.currentVendor.id" />
+      </div>
+    </modal>
+
     <div class="row mb-3">
       <div class="col-6">
         <ul class="list-unstyled inline-buttons">
@@ -39,9 +60,29 @@
     </div>
 
     <div class="row mt-4" v-if="activeView == 0">
-        <div class="col-3 d-flex flex-column align-items-center" v-for="(discount, index) in point_discounts" :key="index">
-            <div class="card-discount">
-                <img src="@/assets/images/bg-default.jpg" alt="Discount" />
+        <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center" v-for="(discount, index) in point_discounts" :key="'points-'+index">
+            <div class="card-discount" @click.prevent="editedDiscount = discount.id; $modal.show('editPoints')">
+                <img :src="discount.image.file" alt="Discount" />
+                <div class="overlay"></div>
+                <div class="status" v-if="discount.status == 0">
+                    <span>Activé</span> <font-awesome-icon icon="check-circle" />
+                </div>
+            </div>
+            <h5>{{ discount.name }}</h5>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center" v-for="(discount, index) in percent_discounts" :key="'percent-'+index">
+            <div class="card-discount" @click.prevent="editedDiscount = discount.id; $modal.show('editPercents');">
+                <img :src="discount.image.file" alt="Discount" />
+                <div class="overlay"></div>
+                <div class="status" v-if="discount.status == 0">
+                    <span>Activé</span> <font-awesome-icon icon="check-circle" />
+                </div>
+            </div>
+            <h5>{{ discount.name }}</h5>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center" v-for="(discount, index) in amount_discounts" :key="'amount-'+index">
+            <div class="card-discount" @click.prevent="editedDiscount = discount.id; $modal.show('editAmounts');">
+                <img :src="discount.image.file" alt="Discount" />
                 <div class="overlay"></div>
                 <div class="status" v-if="discount.status == 0">
                     <span>Activé</span> <font-awesome-icon icon="check-circle" />
@@ -57,12 +98,18 @@
 </template>
 
 <script>
+import EditPointDiscount from "@/components/discounts/EditPointDiscount.vue"
+import EditAmountDiscount from "@/components/discounts/EditAmountDiscount.vue"
+import EditPercentDiscount from "@/components/discounts/EditPercentDiscount.vue"
+
 export default {
+  components: { EditPointDiscount, EditAmountDiscount, EditPercentDiscount },
   data() {
       return {
           point_discounts: [],
           amount_discounts: [],
           percent_discounts: [],
+          editedDiscount: {},
           activeView: 0
       }
   },
@@ -81,6 +128,18 @@ export default {
           }).finally(() => {
               loader.hide();
           })
+      },
+      updateDiscountPoint(data) {
+        this.$set(this.point_discounts, this.point_discounts.map(discount => discount.id).indexOf(data.id), data);
+        this.$modal.hide('editPoints');
+      },
+      updateDiscountAmount(data) {
+        this.$set(this.amount_discounts, this.amount_discounts.map(discount => discount.id).indexOf(data.id), data);
+        this.$modal.hide('editAmounts');
+      },
+      updateDiscountPercent(data) {
+        this.$set(this.percent_discounts, this.percent_discounts.map(discount => discount.id).indexOf(data.id), data);
+        this.$modal.hide('editPercents');
       }
   }
 };

@@ -8,9 +8,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "./assets/css/style.scss"
 import Toasted from 'vue-toasted'
 import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
 import VueProgressBar from 'vue-progressbar'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle, faEuroSign, faPercentage } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Dropdown from "@/components/utils/Dropdown.vue"
 import Loading from 'vue-loading-overlay'
@@ -22,16 +23,31 @@ import Tabs from '@/components/utils/Tabs.vue'
 import Tab from '@/components/utils/Tab.vue'
 import vue2Dropzone from 'vue2-dropzone'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+import VueCtkDateTimePicker from 'vue-ctk-date-time-picker'
+import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css'
+import ToggleButton from 'vue-js-toggle-button'
+
 
 Vue.config.productionTip = false
 
 // Font awesome
-library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle)
+library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle, faEuroSign, faPercentage)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 // Custom Components
 Vue.component('dropdown', Dropdown)
+
+// Moment.js
+const moment = require('moment')
+require('moment/locale/fr')
+ 
+Vue.use(require('vue-moment'), {
+    moment
+})
+
+// Toggle Button
+Vue.use(ToggleButton)
 
 // Progressbar
 Vue.use(VueProgressBar, {
@@ -160,6 +176,9 @@ Vue.component('tab', Tab)
 
 // Dropzone file upload
 Vue.component('dropzone', vue2Dropzone)
+
+// CTK Datetime Picker
+Vue.component('datetime-picker', VueCtkDateTimePicker);
 
 new Vue({
   router,

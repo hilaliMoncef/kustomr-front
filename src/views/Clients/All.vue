@@ -16,7 +16,7 @@
 
     <modal class="h-100" height="auto" name="detailCustomer" :adaptative="true">
       <div class="p-4 px-5">
-        <DetailCustomer :customer="detailCustomer" />
+        <DetailCustomer @updatedCustomer="reloadCustomer" :vendor="$store.state.currentVendor.id" :customer="detailCustomer" />
       </div>
     </modal>
 
@@ -214,6 +214,15 @@ export default {
     addedCustomerList(list) {
       this.lists.unshift(list);
       this.$modal.hide("addCustomerList");
+    },
+    reloadCustomer(id) {
+      var index = this.customers.map(customer => customer.id).indexOf(id);
+      this.$http.get('/customers/'+ id).then(resp => {
+        this.$set(this.customers, index, resp.data);
+        this.detailCustomer = resp.data;
+      }).catch(() => {
+        this.$toasted.global.error({message: 'Impossible de recharger le client.'});
+      })
     }
   }
 };

@@ -6,8 +6,12 @@
           <tab name="Points de fidélité" :selected="true">
               <AddPointDiscount :vendor="$store.state.currentVendor.id" />
           </tab>
-          <tab name="Pourcentage">Second</tab>
-          <tab name="Montant fixe">third</tab>
+          <tab name="Pourcentage">
+              <AddPercentDiscount :vendor="$store.state.currentVendor.id" />
+          </tab>
+          <tab name="Montant fixe">
+              <AddAmountDiscount :vendor="$store.state.currentVendor.id" />
+          </tab>
         </tabs>
       </div>
     </div>
@@ -21,8 +25,10 @@
 
 <script>
 import AddPointDiscount from "@/components/discounts/AddPointDiscount.vue"
+import AddPercentDiscount from "@/components/discounts/AddPercentDiscount.vue"
+import AddAmountDiscount from "@/components/discounts/AddAmountDiscount.vue"
 
 export default {
-    components: {AddPointDiscount}
+    components: {AddPointDiscount, AddPercentDiscount, AddAmountDiscount}
 };
 </script>

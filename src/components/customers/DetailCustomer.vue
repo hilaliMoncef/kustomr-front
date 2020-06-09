@@ -62,8 +62,8 @@
                         <li v-for="(transaction, index) in transactions" :key="index">
                             <span class="dot"></span>
                             <span>{{ transaction.date | moment('from', 'now') }}</span>
-                            <span class="text-primary" v-if="!transaction.refunded">{{ transaction.amount }} points</span>
-                            <s class="text-primary text-" v-else>{{ transaction.amount }} points</s>
+                            <span class="text-primary" v-if="!transaction.refunded">{{ transaction.amount_discounted }} points</span>
+                            <s class="text-primary text-" v-else>{{ transaction.amount_discounted }} points</s>
                         </li>
                     </ul>
                 </div>

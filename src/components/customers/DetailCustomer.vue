@@ -55,7 +55,7 @@
       </div>
       <div class="col-6 d-flex flex-column">
         <div class="h6 text-uppercase text-dark">Dernières activités</div>
-        <div class="bg-background rounded h-100">
+        <div class="bg-background rounded h-100" style="overflow-y: scroll;">
             <div class="timeline-wrapper">
                 <div class="timeline">
                     <ul>

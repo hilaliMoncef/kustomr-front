@@ -68,7 +68,7 @@
                     <span>Activé</span> <font-awesome-icon icon="check-circle" />
                 </div>
             </div>
-            <h5>{{ discount.name }}</h5>
+            <span>{{ discount.name }}</span>
         </div>
         <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center" v-for="(discount, index) in percent_discounts" :key="'percent-'+index">
             <div class="card-discount" @click.prevent="editedDiscount = discount.id; $modal.show('editPercents');">
@@ -78,7 +78,7 @@
                     <span>Activé</span> <font-awesome-icon icon="check-circle" />
                 </div>
             </div>
-            <h5>{{ discount.name }}</h5>
+            <span>{{ discount.name }}</span>
         </div>
         <div class="col-12 col-md-4 col-lg-3 d-flex flex-column align-items-center" v-for="(discount, index) in amount_discounts" :key="'amount-'+index">
             <div class="card-discount" @click.prevent="editedDiscount = discount.id; $modal.show('editAmounts');">
@@ -88,7 +88,7 @@
                     <span>Activé</span> <font-awesome-icon icon="check-circle" />
                 </div>
             </div>
-            <h5>{{ discount.name }}</h5>
+            <span>{{ discount.name }}</span>
         </div>
         <div class="col-12" v-if="point_discounts.length == 0 && amount_discounts.length == 0 && percent_discounts.length == 0">
             <p>Aucune réduction pour le moment</p>

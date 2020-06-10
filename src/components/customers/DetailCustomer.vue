@@ -29,27 +29,27 @@
         <ul class="metrics">
           <li>
             Points cumulés
-            <span class="text-primary font-weight-bold">{{ customer.points }}</span>
+            <span class="text-primary">{{ customer.points }} points</span>
           </li>
           <li>
             Dépenses réalisés
-            <span class="text-primary font-weight-bold">{{ customer.points }}</span>
+            <span class="text-primary">{{ customer.total_expenses }} €</span>
           </li>
           <li>
             Panier moyen
-            <span class="text-primary font-weight-bold">{{ customer.points }}</span>
+            <span class="text-primary">{{ customer.avg_expenses }} €</span>
           </li>
           <li>
             Fréquences des visites
-            <span class="text-primary font-weight-bold">{{ customer.points }}</span>
+            <span class="text-primary">{{ customer.visit_freq }} / mois</span>
           </li>
           <li>
             Taux d'engagement
-            <span class="text-primary font-weight-bold">{{ customer.points }}</span>
+            <span class="text-primary">{{ customer.points }}</span>
           </li>
           <li>
             Dernière visite
-            <span class="text-primary font-weight-bold">{{ customer.points }}</span>
+            <span class="text-primary">{{ customer.last_visit | moment("from", "now") }}</span>
           </li>
         </ul>
       </div>

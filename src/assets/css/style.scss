@@ -1489,6 +1489,10 @@ address {}
   }
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .vm--modal {
   overflow: visible !important;
 }
@@ -2721,6 +2725,9 @@ address {}
   transform: translate(-2em, 0);
 }
 
+/* ==========================================================================
+   20. Special Form CSS
+   ========================================================================== */
 
 .form-dark {
   .form-control {
@@ -2769,6 +2776,88 @@ address {}
   .datetimepicker {
     .datepicker {
       background-color: $backgroundColor !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   21. Dropdown
+   ========================================================================== */
+
+   .dropdown {
+.trigger {
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: auto;
+  z-index: 1000;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: $textDarkColor !important;
+  text-align: left;
+  list-style: none;
+  background-color: white;
+  background-clip: padding-box;
+  border-radius: 7px;
+  -webkit-box-shadow: 8px 8px 16px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 8px 8px 16px 0px rgba(0,0,0,0.1);
+  box-shadow: 8px 8px 16px 0px rgba(0,0,0,0.1);
+
+  &:after {
+    content: " ";
+    position: absolute;
+    right: 15px;
+    top: -5px;
+    border-top: none;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-bottom: 5px solid white;
+  }
+
+  ul {
+    list-style: none;
+    padding: 8px 20px;
+    margin: 0;
+
+    li {
+      margin-bottom: 5px;
+      width: 100%;
+      white-space: nowrap;
+
+      a {
+        color: #fff;
+        transition: 0.2s all ease-in-out;
+
+        &:hover {
+          color: #ED6C3E;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+}
+
+
+@media (max-width: 767px) { 
+  .dropdown {  
+    .menu {
+        position: relative;
+        padding: 0;
+        width: 100%;
+        margin-bottom: 10px;
+        background-color: lighten(#3d405c, 10%);
     }
   }
 }

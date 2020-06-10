@@ -64,6 +64,14 @@ Vue.use(VueRouter)
     }
   },
   {
+    path: '/trainings',
+    name: 'Trainings',
+    component: () => import(/* webpackChunkName: "trainings" */ '@/views/Trainings/All.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/settings',
     name: 'Settings',
     component: () => import(/* webpackChunkName: "others" */ '@/views/Settings.vue'),

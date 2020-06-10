@@ -66,9 +66,9 @@
             </router-link>
             <div class="after"></div>
           </li>
-          <li :class="[currentRoute.includes('formations') ? 'active' : '', 'nav-item']">
+          <li :class="[currentRoute.includes('trainings') ? 'active' : '', 'nav-item']">
             <div class="before"></div>
-            <router-link class="nav-link" to="/formations">
+            <router-link class="nav-link" to="/trainings">
               <font-awesome-icon icon="book" /> Formations
             </router-link>
             <div class="after"></div>

@@ -11,7 +11,7 @@ import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 import VueProgressBar from 'vue-progressbar'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle, faEuroSign, faPercentage } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle, faEuroSign, faPercentage, faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Dropdown from "@/components/utils/Dropdown.vue"
 import Loading from 'vue-loading-overlay'
@@ -26,12 +26,12 @@ import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 import VueCtkDateTimePicker from 'vue-ctk-date-time-picker'
 import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css'
 import ToggleButton from 'vue-js-toggle-button'
-
+import VueYoutube from 'vue-youtube'
 
 Vue.config.productionTip = false
 
 // Font awesome
-library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle, faEuroSign, faPercentage)
+library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle, faEuroSign, faPercentage, faCheck)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -67,6 +67,9 @@ Vue.use(excel)
 
 // Pagination
 Vue.use(VuePaginate)
+
+// Youtube
+Vue.use(VueYoutube)
 
 // Axios config
 const baseURL = process.env.VUE_APP_SERVER_URL;

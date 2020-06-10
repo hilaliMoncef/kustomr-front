@@ -123,7 +123,8 @@ export default {
               this.point_discounts = resp.data.points;
               this.amount_discounts = resp.data.amount;
               this.percent_discounts = resp.data.percent;
-          }).catch(() => {
+          }).catch(err => {
+            console.log(err.response);
               this.$toasted.global.error({message: 'Impossible de récupérer les réductions.'})
           }).finally(() => {
               loader.hide();

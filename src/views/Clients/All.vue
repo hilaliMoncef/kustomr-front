@@ -47,9 +47,23 @@
               </button>
             </li>
             <li>
-              <button class="btn btn-secondary" type="button">
-                <font-awesome-icon icon="sort" class="mr-2" />Trier
-              </button>
+              <dropdown>
+                  <template v-slot:button>
+                    <button class="btn btn-secondary" type="button">
+                      <font-awesome-icon icon="sort" class="mr-2" />Trier
+                    </button>
+                  </template>
+                  <template v-slot:links>
+                    <ul class="list-unstyled">
+                      <li v-for="property in properties" @click.prevent="sortByProperty(property.property)" :key="property.property" class="d-flex align-items-center justify-content-between cursor-pointer" :class="[selectedSort == property.property ? 'text-primary' : '']">
+                        <span>{{ property.label }}</span>
+                        <div v-if="selectedSort == property.property">
+                          <font-awesome-icon icon="check" size="xs" />
+                        </div>
+                      </li>
+                    </ul>
+                  </template>
+                </dropdown>
             </li>
           </ul>
         </div>
@@ -85,8 +99,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(customer, index) in customers" :key="index" @click.prevent="detailCustomer = customer; $modal.show('detailCustomer');">
-                <td>{{ customer.first_name }} {{ customer.last_name }}</td>
+              <tr v-for="(customer, index) in processedCustomers" :key="index" @click.prevent="detailCustomer = customer; $modal.show('detailCustomer');">
+                <td>{{ customer.name }}</td>
                 <td>{{ customer.email }}</td>
                 <td>{{ customer.phone }}</td>
                 <td>#{{ customer.id }}</td>
@@ -176,7 +190,14 @@ export default {
         Telephone: "phone",
         "Numéro client": "id",
         Points: "points"
-      }
+      },
+      // Filtering part
+      properties: [
+        {property: 'name', label: 'Nom'},
+        {property: 'id', label: 'Numéro client'},
+        {property: 'points', label: 'Points'},
+      ],
+      selectedSort: null
     };
   },
   created() {
@@ -186,6 +207,15 @@ export default {
   computed: {
     currentUser() {
       return this.$store.state.currentUser;
+    },
+    processedCustomers() {
+      const customers = this.customers.slice(0);
+      if(this.selectedSort) {
+        customers.sort((a,b) => { // eslint-disable-line
+          return eval('b.'+this.selectedSort) - eval('a.'+this.selectedSort) // eslint-disable-line
+        });
+      }
+      return customers
     }
   },
   methods: {
@@ -223,7 +253,15 @@ export default {
       }).catch(() => {
         this.$toasted.global.error({message: 'Impossible de recharger le client.'});
       })
+    },
+    // Sorting Part
+    sortByProperty(property) {
+      if(this.selectedSort == property) {
+        this.selectedSort = null;
+      } else {
+        this.selectedSort = property;
+      }
     }
-  }
+  },
 };
 </script>

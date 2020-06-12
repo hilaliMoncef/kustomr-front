@@ -72,6 +72,30 @@ Vue.use(VueRouter)
     }
   },
   {
+    path: '/communication',
+    name: 'Socials',
+    component: () => import(/* webpackChunkName: "socials" */ '@/views/Socials/Home.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/communication/mail',
+    name: 'Emails',
+    component: () => import(/* webpackChunkName: "socials" */ '@/views/Socials/Email/All.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/communication/mail/add',
+    name: 'AddEmails',
+    component: () => import(/* webpackChunkName: "socials" */ '@/views/Socials/Email/Add.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/settings',
     name: 'Settings',
     component: () => import(/* webpackChunkName: "others" */ '@/views/Settings.vue'),

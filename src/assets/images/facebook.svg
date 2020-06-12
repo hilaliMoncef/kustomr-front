@@ -1,0 +1,14 @@
+<svg id="Groupe_19" data-name="Groupe 19" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="72" height="72" viewBox="0 0 72 72">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00a9fe"/>
+      <stop offset="1" stop-color="#005dfb"/>
+    </linearGradient>
+  </defs>
+  <g id="Groupe_18" data-name="Groupe 18">
+    <rect id="Rectangle_43" data-name="Rectangle 43" width="72" height="72" rx="16.003" fill="url(#linear-gradient)"/>
+    <g id="Groupe_17" data-name="Groupe 17" transform="translate(21.773 14.038)">
+      <path id="Tracé_21" data-name="Tracé 21" d="M349.325,51.175V76.068h-11.4V51.175h-9.266V40.628h9.266V32.59c0-9.143,5.444-14.193,13.78-14.193a56.239,56.239,0,0,1,8.166.711V28.09h-4.6c-4.534,0-5.947,2.812-5.947,5.695v6.843h10.12l-1.622,10.547Z" transform="translate(-328.659 -18.397)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

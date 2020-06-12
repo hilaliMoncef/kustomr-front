@@ -80,7 +80,7 @@
       <div class="d-flex align-items-center justify-content-around w-100 mb-2">
         <div>
           <router-link
-            to="/reglages"
+            to="/settings"
             class="text-white  text-uppercase"
           >Réglages</router-link>
         </div>

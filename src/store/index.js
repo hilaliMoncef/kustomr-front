@@ -77,8 +77,7 @@ export default new Vuex.Store({
               reject({ message: 'Impossible d\'accéder à ce compte. Il a peut-être expiré ou a été désactivé.' })
             })
           })
-          .catch(err => {
-            console.error(err.response);
+          .catch(() => {
             reject({ message: 'Impossible de se connecter avec ces identifiants. Veuillez réessayer.' })
           })
       })
@@ -90,6 +89,11 @@ export default new Vuex.Store({
       commit('SET_BEARER', payload.access)
 
       // Update user details
+      jwt.getUserInfo().then(resp => {
+        commit('UPDATE_USER_INFO', resp.data)
+      })
+    },
+    refreshUserInfo({ commit }) {
       jwt.getUserInfo().then(resp => {
         commit('UPDATE_USER_INFO', resp.data)
       })

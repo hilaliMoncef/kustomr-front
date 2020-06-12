@@ -1,0 +1,12 @@
+<svg id="Groupe_23" data-name="Groupe 23" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="72" height="72" viewBox="0 0 72 72">
+  <defs>
+    <linearGradient id="linear-gradient" y1="1" x2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#3276e3"/>
+      <stop offset="1" stop-color="#80aef8"/>
+    </linearGradient>
+  </defs>
+  <rect id="Rectangle_42" data-name="Rectangle 42" width="72" height="72" rx="16" fill="url(#linear-gradient)"/>
+  <g id="Groupe_20" data-name="Groupe 20" transform="translate(13.858 20.124)">
+    <path id="Tracé_23" data-name="Tracé 23" d="M1490.075-849.72a4.334,4.334,0,0,1-4.334-4.327v-23.678a4.332,4.332,0,0,1,4.327-4.327h36.168a2.017,2.017,0,0,1,1.932,1.38,2.016,2.016,0,0,1-.649,2.253l-15.954,13.907-.048.039a5.662,5.662,0,0,1-6.672.219,1.055,1.055,0,0,1-.094-.072l-13.7-11.6a1.109,1.109,0,0,1-.13-1.562,1.108,1.108,0,0,1,1.562-.13l13.656,11.559a3.451,3.451,0,0,0,4-.146l15.636-13.629h-35.7a2.112,2.112,0,0,0-2.11,2.11v23.678a2.112,2.112,0,0,0,2.11,2.11l35.872-.235a2.114,2.114,0,0,0,2.117-2.11V-872.39a1.109,1.109,0,0,1,1.109-1.109,1.109,1.109,0,0,1,1.109,1.109v18.108a4.332,4.332,0,0,1-4.327,4.327Z" transform="translate(-1485.741 882.052)" fill="#fff" stroke="#fff" stroke-width="1"/>
+  </g>
+</svg>

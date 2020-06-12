@@ -1459,6 +1459,100 @@ address {}
   }
 }
 
+.card-round {
+  background-color: white;
+    border-radius: 20px;
+    width: 100%;
+    padding: 20px 35px;
+}
+
+
+.card-tabs-vertical {
+  .tabs {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 20px 0px;
+      padding-left: 20px;
+      width: 100%;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      text-transform: uppercase;
+      color: $textColor;
+      position: relative;
+      cursor: pointer;
+
+      a {
+        color: $textColor;
+      }
+
+      &.is-active {
+        background-color: white;
+        color: $primaryColor;
+
+        a {
+          &:after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            width: 10%;
+            left: 45%;
+            height: 2px;
+            background-color: $primaryColor;
+          }
+        }
+      }
+      &.is-active:not(.last) {
+          &:after {
+            content: "";
+            position: absolute;
+            background-color: $backgroundColor;
+            bottom: -30px;
+            right: 0;
+            width: 50px;
+            height: 50%;
+            border-top-right-radius: 20px;
+            box-shadow: 20px 0px 0 0 white;
+        }
+      }
+
+      &.is-active:not(.first) {
+        &:before {
+          content: "";
+          position: absolute;
+          background-color: $backgroundColor;
+          top: -30px;
+          right: 0;
+          width: 50px;
+          height: 50%;
+          border-bottom-right-radius: 20px;
+          box-shadow: 20px 0px 0 0 white;
+        }
+      }
+    }
+  }
+
+  .tabs-details {
+    background-color: white;
+    border-radius: 20px;
+    width: 100%;
+    padding: 20px 35px;
+    height: 100%;
+
+    &.first {
+      border-top-left-radius: 0px;
+    }
+
+    &.last {
+      border-top-right-radius: 0px;
+    }
+  }
+}
+
 /* ==========================================================================
    9. Tables
    ========================================================================== */
@@ -2734,6 +2828,14 @@ address {}
     background-color: $backgroundColor;
     border: 0;
     border-radius: 5px;
+
+    &:disabled {
+      background-color: #E5E5E5;
+    }
+  }
+
+  label {
+    text-transform: uppercase;
   }
 
   .table {
@@ -2769,7 +2871,11 @@ address {}
 
     &.dropzone {
       min-height: 30px;
+      height: 100%;
       padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -2777,6 +2883,41 @@ address {}
     .datepicker {
       background-color: $backgroundColor !important;
     }
+  }
+}
+
+.text-divider {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .bar {
+    flex-grow: 1;
+    width: 100%;
+    height: 1px;
+    background-color: #D8D8D8;
+  }
+}
+
+.mail-template {
+  height: 100px;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.2);
+  position: relative;
+  cursor: pointer;
+
+  .selected {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    color: $primaryColor;
   }
 }
 

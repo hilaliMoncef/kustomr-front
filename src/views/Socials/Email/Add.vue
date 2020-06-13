@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row">
+    <div class="row" v-if="activeView == 0">
       <div class="col-12 col-md-9">
         <div class="card-round">
           <h5 class="text-dark text-uppercase text-center">Configurer votre campagne mail</h5>
@@ -9,7 +9,7 @@
               <div class="col-12 col-lg-6 mb-3 mb-lg-0">
                 <div class="form-group">
                   <label for="name">Nom de la campagne mail</label>
-                  <input type="text" class="form-control" v-model="email.name" />
+                  <input type="text" class="form-control" v-model="email.title" />
                   <small
                     class="form-text"
                   >Choisissez un nom pour votre campagne afin de le retrouver facilement dans votre compte.</small>
@@ -72,15 +72,38 @@
               </div>
               <div class="col-12 col-lg-6">
                 <div class="form-group">
+                  <label for="name">Envoyer plus tard ?</label>
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="custom-checkbox mr-2 flex-grow-1 text-success"
+                      :class="[email.isScheduled ? 'active' : '']"
+                      @click.prevent="email.send_at = new Date().toISOString(); email.isScheduled = true"
+                    >
+                      <font-awesome-icon icon="check-circle" class="mr-1" />Oui
+                    </div>
+                    <div
+                      class="custom-checkbox ml-2 flex-grow-1 text-danger"
+                      :class="[!email.isScheduled ? 'active' : '']"
+                      @click.prevent="email.isScheduled = false"
+                    >
+                      <font-awesome-icon icon="times-circle" class="mr-1" />Non
+                    </div>
+                  </div>
+                  <small
+                    class="form-text"
+                  >Kustomr choisit pour vous la meilleure horaire d'envoi d'emails programmés pour un résultat optimal.</small>
+                </div>
+                <div class="form-group" v-if="email.isScheduled">
                   <label>Date de programmation de la campagne</label>
                   <datetime-picker
-                    v-model="email.sent_at"
-                    format="YYYY-MM-DD HH:mm"
+                    v-model="email.send_at"
+                    format="YYYY-MM-DD"
                     :inline="true"
                     locale="fr"
                     :label="'Sélectionner une date'"
                     color="#E60041"
-                    :min-date="new Date() | moment('YYYY-MM-DD HH:mm')"
+                    :only-date="true"
+                    :min-date="new Date() | moment('YYYY-MM-DD')"
                     :no-keyboard="true"
                   />
                   <small
@@ -151,7 +174,10 @@
             </div>
             <div class="row">
               <div class="col text-center">
-                <button class="btn btn-primary btn-rounded text-uppercase">Suivant</button>
+                <button
+                  class="btn btn-primary btn-rounded text-uppercase"
+                  @click.prevent="nextView"
+                >Suivant</button>
               </div>
             </div>
           </div>
@@ -159,22 +185,51 @@
       </div>
       <div class="col-12 col-md-9"></div>
     </div>
+    <div class="row" v-else-if="activeView == 1">
+      <div class="col-12 col-md-9">
+        <div class="card-round">
+          <h5 class="text-dark text-uppercase text-center">Configurer votre campagne mail</h5>
+          <div class="form-dark">
+            <div class="row">
+              <InfoEmail @input="inputContent" @mediaAdded="addMedia" :vendor="$store.state.currentVendor" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col text-center">
+              <button
+                class="btn btn-outline-primary btn-rounded text-uppercase mr-1"
+                @click.prevent="activeView = 0"
+              >Retour</button>
+              <button class="btn btn-primary btn-rounded text-uppercase ml-1" @click.prevent="save">Programmer ma campagne</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import InfoEmail from "@/components/emails/Info.vue"
+
 export default {
+  components: { InfoEmail },
   data() {
     return {
       email: {
-        name: "",
+        vendor: null,
+        title: "",
         subject: "",
         content: "",
-        sent_at: new Date().toISOString(),
+        media: null,
+        isScheduled: false,
+        send_at: null,
         to: [],
         discount: null,
         type_code: "points"
       },
+      activeView: 0,
       lists: [],
       date_range: null,
       isPromo: false,
@@ -194,6 +249,23 @@ export default {
     this.getDiscounts();
   },
   methods: {
+    nextView() {
+      if(this.email.title != '' && this.email.subject != '' && this.email.to.length > 0) {
+        if(this.isPromo && !this.email.discount) {
+          this.$toasted.global.error({message: 'Veuillez choisir une promotion à mettre en avant.'});
+        } else {
+          this.activeView = 1;
+        }
+      } else {
+        this.$toasted.global.error({message: 'Des champs sont manquants.'});
+      }
+    },
+    addMedia(media) {
+      this.email.media = media.id;
+    },
+    inputContent(val) {
+      this.email.content = val;
+    },
     getCustomerLists() {
       let loader = this.$loading.show();
       this.$http
@@ -230,6 +302,21 @@ export default {
         this.email.to = [].concat.apply([], arrays);
       } else {
         this.email.to = [];
+      }
+    },
+    save() {
+      if(this.email.content != "") {
+        this.email.vendor = this.$store.state.currentVendor.id;
+        if(!this.email.isScheduled) {
+          this.email.send_at = this.$options.filters.moment(new Date(), "YYYY-MM-DD");
+        }
+
+        this.$http.post('emails/new', this.email).then(resp => {
+          this.$toasted.global.success(resp.data);
+          this.$router.push('/communication/mail');
+        }).catch(err => {
+          this.$toasted.global.error(err.response.data);
+        })
       }
     }
   }

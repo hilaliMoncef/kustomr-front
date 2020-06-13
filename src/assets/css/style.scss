@@ -2520,12 +2520,12 @@ address {}
 
 
 .email-editor {
-  .header {
+  .email-header {
     width: 100%;
     height: 180px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     img {
       width: 120px;

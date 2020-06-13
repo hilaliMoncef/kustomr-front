@@ -11,7 +11,7 @@ import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 import VueProgressBar from 'vue-progressbar'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle, faEuroSign, faPercentage, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle, faEuroSign, faPercentage, faCheck, faPen } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Dropdown from "@/components/utils/Dropdown.vue"
 import Loading from 'vue-loading-overlay'
@@ -31,7 +31,7 @@ import VueYoutube from 'vue-youtube'
 Vue.config.productionTip = false
 
 // Font awesome
-library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle, faEuroSign, faPercentage, faCheck)
+library.add(faHome, faCog, faPowerOff, faUser, faUsers, faDivide, faBullhorn, faChartBar, faBook, faBriefcase, faShareAlt, faBroadcastTower, faEnvelope, faSearch, faBell, faPlus, faArrowUp, faArrowDown, faFilter, faSort, faEllipsisV, faHandHoldingUsd, faCheckCircle, faTimesCircle, faEuroSign, faPercentage, faCheck, faPen)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

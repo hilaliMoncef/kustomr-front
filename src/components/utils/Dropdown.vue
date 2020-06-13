@@ -3,7 +3,7 @@
     <div class="trigger" @click.prevent="toggleDropdown()">
       <slot name="button"></slot>
     </div>
-    <div class="menu" @click.prevent="toggleDropdown()" :class="[dropdownActive ? '' : 'd-none']">
+    <div class="menu" @click.prevent="toggleDropdownOnClick()" :class="[dropdownActive ? '' : 'd-none']">
       <slot name="links"></slot>
     </div>
   </div>
@@ -13,6 +13,12 @@
 import ClickOutside from 'vue-click-outside'
 
 export default {
+  props: {
+    hideOnClick: {
+      type: Boolean,
+      default: true
+    }
+  },
   data() {
     return {
       dropdownActive: false
@@ -21,6 +27,11 @@ export default {
   methods: {
     toggleDropdown() {
       this.dropdownActive = !this.dropdownActive;
+    },
+    toggleDropdownOnClick() {
+      if(this.hideOnClick) {
+        this.dropdownActive = !this.dropdownActive;
+      }
     },
     hideDropdown() {
         this.dropdownActive = false;

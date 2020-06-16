@@ -27,7 +27,7 @@
         </router-link>
       </div>
       <div class="col-12 col-md-6 col-xl-3 mb-3 mb-xl-0">
-        <div class="card h-100">
+        <router-link to="/communication/sms" class="card h-100">
           <div class="card-body d-flex flex-column">
             <div class="d-flex align-items-center mb-3">
               <img src="@/assets/images/sms.svg" alt="Kustomr SMS" />
@@ -35,7 +35,7 @@
             </div>
             <p class="text-dark small">Utilisez l’outil Kustomr SMS pour créer vos campagnes SMS à votre clientèle fidèle.</p>
           </div>
-        </div>
+        </router-link>
       </div>
       <div class="col-12 col-md-6 col-xl-3 mb-3 mb-lg-0">
         <div class="card h-100">

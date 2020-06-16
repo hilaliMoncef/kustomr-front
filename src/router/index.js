@@ -96,6 +96,22 @@ Vue.use(VueRouter)
     }
   },
   {
+    path: '/communication/sms',
+    name: 'SMS',
+    component: () => import(/* webpackChunkName: "socials" */ '@/views/Socials/SMS/All.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/communication/sms/add',
+    name: 'AddSMS',
+    component: () => import(/* webpackChunkName: "socials" */ '@/views/Socials/SMS/Add.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/settings',
     name: 'Settings',
     component: () => import(/* webpackChunkName: "others" */ '@/views/Settings.vue'),

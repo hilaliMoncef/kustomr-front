@@ -309,6 +309,8 @@ export default {
         this.email.vendor = this.$store.state.currentVendor.id;
         if(!this.email.isScheduled) {
           this.email.send_at = this.$options.filters.moment(new Date(), "YYYY-MM-DD");
+        } else {
+          this.email.send_at = this.$options.filters.moment(this.email.send_at, "YYYY-MM-DD");
         }
 
         this.$http.post('emails/new', this.email).then(resp => {

@@ -112,6 +112,30 @@ Vue.use(VueRouter)
     }
   },
   {
+    path: '/communication/facebook/connexion',
+    name: 'ConnectFacebook',
+    component: () => import(/* webpackChunkName: "socials" */ '@/views/Socials/Facebook/Connect.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/communication/facebook',
+    name: 'Facebook',
+    component: () => import(/* webpackChunkName: "socials" */ '@/views/Socials/Facebook/All.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/communication/facebook/add',
+    name: 'AddFacebook',
+    component: () => import(/* webpackChunkName: "socials" */ '@/views/Socials/Facebook/Add.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/settings',
     name: 'Settings',
     component: () => import(/* webpackChunkName: "others" */ '@/views/Settings.vue'),

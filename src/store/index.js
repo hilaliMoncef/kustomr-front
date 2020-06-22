@@ -6,6 +6,8 @@ import router from '../router/index'
 
 Vue.use(Vuex)
 
+import moduleFacebook from './facebook/moduleFacebook.js'
+
 export default new Vuex.Store({
   state: {
     currentUser: JSON.parse(localStorage.getItem("userInfo")) || {},
@@ -115,5 +117,6 @@ export default new Vuex.Store({
     }
   },
   modules: {
+    facebook: moduleFacebook
   }
 })

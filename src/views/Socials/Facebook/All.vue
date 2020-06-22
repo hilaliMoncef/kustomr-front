@@ -25,8 +25,8 @@
               </td>
               <td>
                 <div class="d-flex">
-                  <div style="width: 200px; height: 200px;" v-if="campaign.media">
-                    <img :src="campaign.media.file" alt="Image de campagne" class="object-fit" />
+                  <div style="width: 200px; height: 200px; overflow: hidden;" v-if="campaign.media">
+                    <img :src="campaign.media.file" alt="Image de campagne" class="object-fit" style="object-fit: cover;" />
                   </div>
                   <span>{{ campaign.content }}</span>
                 </div>
